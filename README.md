@@ -1,7 +1,36 @@
 # Fake-Candidates-Checker
-This tool verifies LinkedIn URLs to ensure they lead to valid profiles and checks for discrepancies in Work at a Startup profiles. It validates company work histories against databases of known fraudulent companies, flagging profiles with abuse scores or "bad actor" tags.
-In today's digital hiring landscape, ensuring the authenticity of candidates is more important than ever. The Fake Candidates Checker is designed to meticulously analyze LinkedIn profiles for potential red flags. It looks for signs such as newly created accounts, minimal connections, and suspicious work histories. By cross-referencing profile photos across platforms like LinkedIn and using reverse image search, it detects mismatches and AI-generated images.
 
-This tool verifies LinkedIn URLs to ensure they lead to valid profiles and checks for discrepancies in Work at a Startup profiles. It validates company work histories against databases of known fraudulent companies, flagging profiles with abuse scores or "bad actor" tags. Additionally, it identifies suspicious communication patterns, such as the use of VoIP numbers, reluctance to engage in video calls, insistence on remote-only work, and requests to ship equipment to mismatched addresses.
+A starter Apify Actor scaffold for checking candidate authenticity. The initial version uses the Apify SDK with a CheerioCrawler and is ready to run locally or deploy on the Apify platform.
 
-The system assigns comprehensive risk scores based on various fraud indicators and identifies patterns common among fraudulent candidates, such as unusual tagging behavior or incomplete profiles. It highlights candidates who require enhanced screening through background checks and reference calls, helping companies identify potential fraudulent candidates, including those linked to organized schemes like North Korean IT worker infiltration attempts, before they enter the hiring process.
+## Project structure
+
+- `.actor/actor.json` — Actor configuration (name, version, runtime, metadata)
+- `.actor/input_schema.json` — Defines Actor input fields and console form
+- `.actor/output_schema.json` — Defines Actor output links
+- `.actor/dataset_schema.json` — Output view definition for stored dataset items
+- `src/main.js` — Actor entry point (Cheerio-based crawler)
+- `Dockerfile` — Container definition for deployment
+
+## Development workflow
+
+1. Install dependencies (skip if already installed in your environment):
+   ```bash
+   npm install
+   ```
+2. Run the Actor locally:
+   ```bash
+   apify run
+   ```
+3. Authenticate with Apify (once per environment):
+   ```bash
+   apify login
+   ```
+4. Deploy to the Apify platform:
+   ```bash
+   apify push
+   ```
+
+## Notes
+- The Actor uses the default Cheerio-based scaffold and does not include Playwright. Add PlaywrightCrawler only if you need JavaScript rendering.
+- Update the Actor name and description in `.actor/actor.json` and `package.json` if you rebrand the project.
+- The `storage/` directory is ignored locally to keep the repository clean and should be created automatically by Apify when runs are executed.
